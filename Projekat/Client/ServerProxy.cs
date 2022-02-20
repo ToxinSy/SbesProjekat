@@ -30,14 +30,19 @@ namespace Client
             factory.ResetTimer();
         }
 
-        public void SetTimer()
+        public void SetTimer(string timer)
         {
-            factory.SetTimer();
+            factory.SetTimer(timer);
         }
 
-        public void LoadTimer()
+        public void PrintTimer()
         {
-            factory.LoadTimer();
+            factory.PrintTimer();
+        }
+
+        public void TimerThread()
+        {
+            factory.TimerThread();
         }
     }
 }

@@ -20,9 +20,12 @@ namespace Common
         void ResetTimer();
 
         [OperationContract]
-        void SetTimer();
+        void SetTimer(string timer);
 
         [OperationContract]
-        void LoadTimer();
+        void PrintTimer();
+
+        [OperationContract]
+        void TimerThread();
     }
 }
