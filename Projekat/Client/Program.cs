@@ -7,16 +7,15 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Common;
 using Server;
 
 namespace Client
 {
     class Program
     {
-        
         static void Main(string[] args)
         {
-
             NetTcpBinding binding = new NetTcpBinding();
             string serverAddress = "net.tcp://localhost:5000/Options";
             
@@ -28,8 +27,6 @@ namespace Client
 
             using (ServerProxy serverProxy = new ServerProxy(binding, serverAddress))
             {
-
-                int select = 0;
                 while (true) 
                 {
                     Console.WriteLine("-----OPTIONS-----\n");
@@ -45,13 +42,16 @@ namespace Client
                     {
                         if (keyInput.Key == ConsoleKey.D1)
                         {
-                            Console.WriteLine(" Enter hours :");
+                            Console.WriteLine(" Enter hours:");
                             int hh = Int32.Parse(Console.ReadLine());
-                            Console.WriteLine(" Enter minutes :");
+                            Console.WriteLine(" Enter minutes:");
                             int mm = Int32.Parse(Console.ReadLine());
-                            Console.WriteLine(" Enter seconds :");
+                            Console.WriteLine(" Enter seconds:");
                             int ss = Int32.Parse(Console.ReadLine());
-                            serverProxy.SetTimer($"{hh}:{mm}:{ss}");
+                            string plainText = $"{hh}:{mm}:{ss}";
+
+                            byte[] cypher = DES.EncryptFile(plainText, SecretKey.LoadKey(DES.KeyLocation));
+                            serverProxy.SetTimer(cypher);
                         }
                         else if (keyInput.Key == ConsoleKey.D2)
                         {

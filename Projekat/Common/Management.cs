@@ -20,7 +20,7 @@ namespace Common
         void ResetTimer();
 
         [OperationContract]
-        void SetTimer(string timer);
+        void SetTimer(byte[] array);
 
         [OperationContract]
         void PrintTimer();

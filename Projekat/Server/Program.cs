@@ -15,6 +15,8 @@ namespace Server
     {
         static void Main(string[] args)
         {
+            string key = SecretKey.GenerateKey();
+            SecretKey.StoreKey(key, DES.KeyLocation);
 
             NetTcpBinding bindingClient = new NetTcpBinding();
             string addressClient = "net.tcp://localhost:5000/Options";

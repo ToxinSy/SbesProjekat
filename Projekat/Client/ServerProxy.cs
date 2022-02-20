@@ -30,9 +30,9 @@ namespace Client
             factory.ResetTimer();
         }
 
-        public void SetTimer(string timer)
+        public void SetTimer(byte[] array)
         {
-            factory.SetTimer(timer);
+            factory.SetTimer(array);
         }
 
         public void PrintTimer()
@@ -44,5 +44,6 @@ namespace Client
         {
             factory.TimerThread();
         }
+
     }
 }

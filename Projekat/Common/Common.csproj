@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="CustomAuthorizationPolicy.cs" />
     <Compile Include="CustomPrincipal.cs" />
+    <Compile Include="DES.cs" />
     <Compile Include="Formatter.cs" />
     <Compile Include="Management.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,6 +56,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RolesConfigFile.resx</DependentUpon>
     </Compile>
+    <Compile Include="SecretKey.cs" />
+    <Compile Include="SecurityException.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="RolesConfigFile.resx">

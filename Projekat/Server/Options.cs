@@ -44,8 +44,9 @@ namespace Server
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "Change")]
-        public void SetTimer(string timer)
+        public void SetTimer(byte[] array)
         {
+            string timer = DES.DecryptFile(array, SecretKey.LoadKey(DES.KeyLocation));
             string[] parts = timer.Split(':');
             hours = Int32.Parse(parts[0]);
             minutes = Int32.Parse(parts[1]);
